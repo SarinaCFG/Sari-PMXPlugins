@@ -54,9 +54,9 @@ namespace Sari_PMXPlugins
                     );
                     DialogResult answer = MessageBox.Show(
                         string.Format(
-                            "Joint(s) will be created for the following pairs of bodies:{1}{0}",
+                            "Joint(s) will be created for the following pairs of bodies:{1}{0}", pairsString, Environment.NewLine),
                                                           "Info",
-                                                          MessageBoxButtons.OKCancel));
+                                                          MessageBoxButtons.OKCancel);
                     if (DialogResult.OK == answer)
                     {
                         foreach ((IPXBody, IPXBody) pair in pairs)
