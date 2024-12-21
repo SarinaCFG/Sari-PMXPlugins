@@ -40,7 +40,7 @@ This plugin hides Morph from from facial manipulation panel in MMD.
 ![Morph E.Y.E is hidden](img/hideMorph2.png)
 
 # Usage
-Put the Sari PMXPlugins folder from Releases to the ```PmxEditor\_plugin\User\``` folder.  
+Put the Sari PMXPlugins folder from [Releases](https://github.com/SarinaCFG/Sari-PMXPlugins/releases/latest) to the ```PmxEditor\_plugin\User\``` folder.  
 Tested on 
 [English PmxEditor x64 vr.0254f ](https://www.deviantart.com/inochi-pm/art/PmxEditor-vr-0254f-English-Version-v2-0-766313588) and [PmxEditor 0275 x64](https://kkhk22.seesaa.net/article/498439954.html).
 
