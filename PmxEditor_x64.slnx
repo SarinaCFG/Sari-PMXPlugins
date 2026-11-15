@@ -1,14 +1,24 @@
 <Solution>
-  <Project Path="PMXExtensions/PMXExtensions.csproj" />
-  <Project Path="Sari PMXPlugins/Sari PMXPlugins.csproj" />
+  <Project Path="PMXExtensions/PMXExtensions.csproj">
+    <Platform Project="x64" />
+  </Project>
+  <Project Path="Sari PMXPlugins/Sari PMXPlugins.csproj">
+    <Platform Project="x64" />
+  </Project>
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
   <Project Path="PmxEditor/PmxEditor_x64.exe">
     <BuildType Project="Release" />
-    <Platform Project="x64" />
     <Properties Name="DebuggerProjectSystem">
       <Property Name="AttachLaunchAction" Value="Yes" />
       <Property Name="Environment" Value="Default" />
       <Property Name="Executable" Value="PmxEditor/PmxEditor_x64.exe" />
       <Property Name="IORedirection" Value="Auto" />
+      <Property Name="LaunchingEngine" Value="00000000-0000-0000-0000-000000000000" />
+      <Property Name="LaunchSQLEngine" Value="No" />
+      <Property Name="PortSupplier" Value="00000000-0000-0000-0000-000000000000" />
+      <Property Name="RemoteMachine" Value="DESKTOP-O3LVIOQ" />
       <Property Name="StartingDirectory" Value="PmxEditor" />
       <Property Name="UseLegacyDebugEngines" Value="No" />
     </Properties>

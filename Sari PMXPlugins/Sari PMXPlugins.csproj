@@ -5,12 +5,17 @@
 		<RootNamespace>Sari_PMXPlugins</RootNamespace>
 		<UseWindowsForms>true</UseWindowsForms>
 		<ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+		<Platforms>x64</Platforms>
 	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-		<Optimize>true</Optimize>
-		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+	  <Optimize>true</Optimize>
+	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 	</PropertyGroup>
 	<ItemGroup>
+		<Reference Include="PEPlugin">
+			<HintPath>$(PEPluginDir)</HintPath>
+			<Private>false</Private>
+		</Reference>
 		<Reference Include="System.Data.DataSetExtensions" />
 		<Reference Include="Microsoft.CSharp" />
 	</ItemGroup>

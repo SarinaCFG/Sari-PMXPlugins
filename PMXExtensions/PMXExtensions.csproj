@@ -2,16 +2,26 @@
 	<PropertyGroup>
 		<TargetFramework>net481</TargetFramework>
 		<OutputType>Library</OutputType>
+		<Platforms>x64</Platforms>
 	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-		<Optimize>true</Optimize>
-		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+	  <Optimize>true</Optimize>
+	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 	</PropertyGroup>
 	<ItemGroup>
 		<Reference Include="System.Data.DataSetExtensions" />
 		<Reference Include="Microsoft.CSharp" />
+	</ItemGroup>
+	<ItemGroup>
+		<Reference Include="PEPlugin">
+			<HintPath>$(PEPluginDir)</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="SlimDX">
+			<HintPath>$(SlimDXDir)</HintPath>
+		</Reference>
 	</ItemGroup>
 </Project>

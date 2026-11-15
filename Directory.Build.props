@@ -1,5 +1,7 @@
 <Project>
   <PropertyGroup>
     <SariPluginsOutputDir>$(SolutionDir)/PmxEditor/_plugin/User/Sari-PMXPlugins-Debug</SariPluginsOutputDir>
+    <PEPluginDir>$(SolutionDir)/PmxEditor/Lib/PEPlugin/PEPlugin.dll</PEPluginDir>
+    <SlimDXDir>$(SolutionDir)/PmxEditor/Lib/SlimDX/x64/SlimDX.dll</SlimDXDir>
   </PropertyGroup>
 </Project>
