@@ -1,0 +1,9 @@
+<Project>
+	<Target Name="CopyDllsToPmxEditor" AfterTargets="Build">
+		<ItemGroup>
+			<FilesToCopy Include="$(TargetPath)" />
+			<FilesToCopy Include="$(TargetDir)$(TargetName).pdb" Condition="Exists('$(TargetDir)$(TargetName).pdb')" />
+		</ItemGroup>
+		<Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(SariPluginsOutputDir)" SkipUnchangedFiles="false"/>
+	</Target>
+</Project>

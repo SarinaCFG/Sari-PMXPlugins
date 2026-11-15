@@ -1,0 +1,5 @@
+<Project>
+  <PropertyGroup>
+    <SariPluginsOutputDir>$(SolutionDir)/PmxEditor/_plugin/User/Sari-PMXPlugins-Debug</SariPluginsOutputDir>
+  </PropertyGroup>
+</Project>
