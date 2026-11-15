@@ -1,0 +1,13 @@
+<Solution>
+  <Project Path="../PMXExtensions/PMXExtensions.csproj" />
+  <Project Path="../Sari PMXPlugins/Sari PMXPlugins.csproj" />
+  <Project Path="F:\MMD\PmxEditor_0254f_EN - 2.0\PmxEditor_0254f_EN - 2.0\PmxEditor_x64.exe">
+    <BuildType Project="Release" />
+    <Platform Project="x64" />
+    <Properties Name="DebuggerProjectSystem">
+      <Property Name="AttachLaunchAction" Value="Yes" />
+      <Property Name="Executable" Value="F:\MMD\PmxEditor_0254f_EN - 2.0\PmxEditor_0254f_EN - 2.0\PmxEditor_x64.exe"/>
+      <Property Name="StartingDirectory" Value="F:\MMD\PmxEditor_0254f_EN - 2.0\PmxEditor_0254f_EN - 2.0"/>
+    </Properties>
+  </Project>
+</Solution>
