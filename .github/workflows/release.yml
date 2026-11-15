@@ -1,0 +1,55 @@
+name: Build and Release Plugin
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-and-release:
+    runs-on: windows-latest
+    env:
+      APP_VERSION: ${{ github.ref_type == 'tag' && github.ref_name || format('v1.0.{0}', github.run_number) }}
+      ZIP_NAME: Sari-PMXPlugins-${{ github.ref_type == 'tag' && github.ref_name || format('v1.0.{0}', github.run_number) }}.zip
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Download PMXEditor
+        shell: powershell
+        run: |
+              Invoke-WebRequest -Uri "https://kkhk22.up.seesaa.net/tool/PmxEditor_0273.zip" -OutFile "PmxEditor.zip"
+              Expand-Archive -Path "PmxEditor.zip" -DestinationPath "./PmxEditor" -Force
+              Remove-Item "PmxEditor.zip"
+              Get-ChildItem -Path "./PmxEditor/*/*" | Move-Item -Destination "./PmxEditor" -Force
+              Get-ChildItem -Path "./PmxEditor" -Directory | Where-Object { (Get-ChildItem $_.FullName).Count -eq 0 } | Remove-Item
+
+      - name: Restore Project
+        run: msbuild -t:restore PmxEditor_x64.slnx 
+
+      - name: Build Solution
+        run: >
+          msbuild PmxEditor_x64.slnx 
+          /p:Configuration=Release 
+          /p:SariPluginsOutputDir="${{ github.workspace }}\ReleaseOutput"
+
+      - name: Zip the Release Assets
+        shell: powershell
+        run: |
+            $zipName = "Sari-PMXPlugins-${{ github.ref_name }}.zip"
+            Compress-Archive -Path "${{ github.workspace }}\ReleaseOutput\*" -DestinationPath "${{ env.ZIP_NAME }}"
+            Write-Host "Created: ${{ env.ZIP_NAME }}"
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.ZIP_NAME }}
+          tag_name: ${{ env.APP_VERSION }}
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
