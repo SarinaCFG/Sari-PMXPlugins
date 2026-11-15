@@ -77,20 +77,32 @@ namespace PMXExtensions
         /// <returns>Box <see cref="IPXBody"/> with dimentions from bone length.</returns>
         public static IPXBody CreateBoxBodyFromBone(this IPXPmxBuilder builder, IPXBone bone, BodyMode mode)
         {
-            float size;
+            float size = bone.GetLength() / 2;
             V3 position;
             IPXBone childBone = bone.ToBone;
+
             if (childBone != null)
-            {
-                size = (childBone.Position - bone.Position).Length() / 2;
                 position = (childBone.Position + bone.Position) / 2;
-            }
             else
-            {
-                size = bone.ToOffset.Length() / 2;
                 position = bone.Position + bone.ToOffset / 2;
-            }
+
             return builder.CreateBodyFromBone(bone, BodyBoxKind.Box, position, new V3(size, size, size), mode);
+        }
+
+        /// <summary>
+        /// Gets Legth of the bone/
+        /// </summary>
+        /// <param name="bone">Bone</param>
+        /// <returns>Length of the <paramref name="bone"/>.</returns>
+        public static float GetLength(this IPXBone bone)
+        {
+            if(bone == null)
+                return 0;
+            IPXBone childBone = bone.ToBone;
+            if(childBone != null)
+                return (childBone.Position - bone.Position).Length();
+            else
+                return bone.ToOffset.Length();
         }
     }
 }
