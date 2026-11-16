@@ -2,8 +2,28 @@
 	<Target Name="CopyDllsToPmxEditor" AfterTargets="Build">
 		<ItemGroup>
 			<FilesToCopy Include="$(TargetPath)" />
-			<FilesToCopy Include="$(TargetDir)$(TargetName).pdb" Condition="Exists('$(TargetDir)$(TargetName).pdb')" />
+			<FilesToCopy Include="$(TargetDir)$(TargetName).pdb"
+						 Condition="Exists('$(TargetDir)$(TargetName).pdb') AND '$(Configuration)' == 'Debug'" />
 		</ItemGroup>
-		<Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(SariPluginsOutputDir)" SkipUnchangedFiles="false"/>
+		<Copy SourceFiles="@(FilesToCopy)"
+			  DestinationFolder="$(SariPluginsOutputDir)"
+			  SkipUnchangedFiles="false" />
+	</Target>
+
+	<Target Name="CopyReadme" AfterTargets="Build">
+		<ItemGroup>
+			<ImagesToCopy Include="$(MSBuildProjectDirectory)\..\img\**\*.*" />
+			<ReadmeToCopy Include="$(MSBuildProjectDirectory)\..\README.md"
+						  Condition="Exists('$(MSBuildProjectDirectory)\..\README.md')" />
+		</ItemGroup>
+		<Copy SourceFiles="@(ImagesToCopy)"
+			  DestinationFiles="@(ImagesToCopy->'$(SariPluginsOutputDir)img\%(RecursiveDir)%(Filename)%(Extension)')"
+			  SkipUnchangedFiles="true"
+			  Condition="'$(Configuration)' == 'Release'"/>
+
+		<Copy SourceFiles="@(ReadmeToCopy)"
+			  DestinationFolder="$(SariPluginsOutputDir)"
+			  SkipUnchangedFiles="true"
+			  Condition="'$(Configuration)' == 'Release'"/>
 	</Target>
 </Project>
